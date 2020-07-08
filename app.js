@@ -70,6 +70,18 @@ class App extends React.Component {
         )
     }
 
+    deleteGig = (event) => {
+        axios.delete('/gigz/' + event.target.value).then(
+            (response) => {
+                this.setState(
+                    {
+                        gigz: response.data
+                    }
+                )
+            }
+        )
+    }
+
     render = () => {
         return (
             <div>
@@ -94,6 +106,9 @@ class App extends React.Component {
                                         {gig.location}<br/>
                                         {gig.compensation}<br/>
                                         {gig.notes}<br/>
+                                        <button value={gig.id} onClick={this.deleteGig}>
+                                            DELETE
+                                            </button>
                                     </li>
                                 )
                             }
