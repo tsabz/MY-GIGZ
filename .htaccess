@@ -1,0 +1,13 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteRule ^gigz$ controllers/gigz.php?action=index
+
+RewriteCond %{REQUEST_METHOD} ^POST$
+RewriteRule ^gigz$ controllers/gigz.php?action=post
+
+RewriteCond %{REQUEST_METHOD} ^PUT$
+RewriteRule ^gigz/([0-9]+)$ controllers/gigz.php?action=update&id=$1
+
+RewriteCond %{REQUEST_METHOD} ^DELETE$
+RewriteRule ^gigz/([0-9]+)$ controllers/gigz.php?action=delete&id=$1
