@@ -54,14 +54,12 @@ class Gigz {
       $query = "UPDATE gigz SET name = $1, date = $2, location = $3, compensation = $4, notes = $5 WHERE id = $6";
       $query_params = array($updated_gig->name, $updated_gig->date, $updated_gig->location, $updated_gig->compensation, $updated_gig->notes, $updated_gig->id);
       $result = pg_query_params($query, $query_params);
-
       return self::all();
     }
     static function delete($id){
       $query = "DELETE FROM gigz WHERE id = $1";
       $query_params = array($id);
       $result = pg_query_params($query, $query_params);
-
       return self::all();
     }
 }
