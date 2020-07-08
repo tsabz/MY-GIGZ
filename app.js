@@ -3,6 +3,7 @@ class App extends React.Component {
 
     state = {
         gigz: [],
+        show: true
     }
 
     changeNewGigName = (event) => {
@@ -82,6 +83,56 @@ class App extends React.Component {
         )
     }
 
+    changeUpdateGigName = (event) => {
+        this.setState({
+            updateGigName:event.target.value
+        })
+    }
+
+    changeUpdateGigDate = (event) => {
+        this.setState({
+            updateGigDate:event.target.value
+        })
+    }
+
+    changeUpdateGigLocation = (event) => {
+        this.setState({
+            updateGigLocation:event.target.value
+        })
+    }
+
+
+    changeUpdateGigCompensation = (event) => {
+        this.setState({
+            updateGigCompensation:event.target.value
+        })
+    }
+
+    changeUpdateGigNotes = (event) => {
+        this.setState({
+            updateGigNotes:event.target.value
+        })
+    }
+
+    updateGig = (event) => {
+        event.preventDefault();
+        const id = event.target.getAttribute('id');
+        axios.put(
+            '/gigz/' + id,
+            {
+                name:this.state.updateGigName,
+                date:this.state.updateGigDate,
+                location:this.state.updateGigLocation,
+                compensation:this.state.updateGigCompensation,
+                notes:this.state.updateGigNotes
+            }
+        ).then((response) => {
+            this.setState({
+                gigz:response.data
+            })
+        })
+    }
+
     render = () => {
         return (
             <div>
@@ -108,7 +159,15 @@ class App extends React.Component {
                                         {gig.notes}<br/>
                                         <button value={gig.id} onClick={this.deleteGig}>
                                             DELETE
-                                            </button>
+                                        </button>
+                                        <form id={gig.id} onSubmit={this.updateGig}>
+                                            <input onChange={this.changeUpdateGigName} type="text" placeholder="name"/>
+                                            <input onChange={this.changeUpdateGigDate} type="date" placeholder="date"/>
+                                            <input onChange={this.changeUpdateGigLocation} type="text" placeholder="location"/>
+                                            <input onChange={this.changeUpdateGigCompensation} type="text" placeholder="compensation"/>
+                                            <input onChange={this.changeUpdateGigNotes} type="textarea" placeholder="notes"/>
+                                            <input type="submit" value="Update GIG"/>
+                                        </form>
                                     </li>
                                 )
                             }
@@ -120,6 +179,8 @@ class App extends React.Component {
     }
 
 }
+
+
 
 
 ReactDOM.render(
