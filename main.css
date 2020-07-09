@@ -10,7 +10,8 @@ body {
 .container {
     height: 100vh;
     width: 100vw;
-    background-color: black;    
+    background-color: black; 
+    margin-bottom: 200px;   
 }
 
 .pagecontent {
@@ -25,9 +26,9 @@ body {
     background-color: black;    
     background-size: cover;
     text-align: center;
-    /* color: blanchedalmond; */
+    color: blanchedalmond;
     /* color: #a22e94; */
-    color: #f9a079;
+    /* color: #f9a079; */
     font-family: 'Modak', cursive;
     height: 92px;
     font-size: 50px;
@@ -102,6 +103,12 @@ input {
     padding: 10px;
     border-radius: 20px;
     background-color: whitesmoke;
+}
+
+img {
+    opacity: .5;
+    position: absolute;
+    width: 100%;
 }
 
 /* https://medium.com/@beyondborders/beginner-css-grid-sticky-navigation-scrolling-content-7c4de0a8d1dc */

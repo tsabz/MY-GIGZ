@@ -227,6 +227,7 @@ class App extends React.Component {
                 </ul>
                  </div>
             </div>
+            <img src="https://images.unsplash.com/photo-1531469543542-5f61e38b875b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=4120&q=80"/>
         </div>
         )
     }
