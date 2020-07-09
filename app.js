@@ -181,27 +181,34 @@ class App extends React.Component {
 
     render = () => {
         return (
-            <div>
-            <h1>Create GIG Post</h1>
-            <form onSubmit={this.createGig}>
-                <input onChange={this.changeNewGigName} type="text" placeholder="name"/>
-                <input onChange={this.changeNewGigDate} type="date" placeholder="date"/>
-                <input onChange={this.changeNewGigLocation} type="text" placeholder="location"/>
-                <input onChange={this.changeNewGigCompensation} type="text" placeholder="compensation"/>
-                <input onChange={this.changeNewGigNotes} type="textarea" placeholder="notes"/>
-                <input type="submit" value="Create GIG"/>
-            </form>
-                <h2>GIGZ</h2>
+    <div className="container">
+            <div className="header">
+                <h1>MYGIGZ</h1>
+            </div>
+            <div className="pagecontent">
+            <div className="sidebar">
+                <h2>ADD MY GIGZ</h2>
+                <form className="newform" onSubmit={this.createGig}>
+                    <input onChange={this.changeNewGigName} type="text" placeholder="name"/>
+                    <input onChange={this.changeNewGigDate} type="date" placeholder="date"/>
+                    <input onChange={this.changeNewGigLocation} type="text" placeholder="location"/>
+                    <input onChange={this.changeNewGigCompensation} type="text" placeholder="compensation"/>
+                    <input onChange={this.changeNewGigNotes} type="textarea" placeholder="notes"/>
+                    <input type="submit" value="Create GIG"/>
+                </form>
+            </div>
+            <div className="main">
+        
                 <ul>
                     {
                         this.state.gigz.map(
                             (gig) => {
                                 return (
                                     <li>
-                                        {gig.name}<br/>
-                                        {gig.date}<br/>
-                                        {gig.location}<br/>
-                                        {gig.compensation}<br/>
+                                        <h4>NAME: {gig.name}</h4>
+                                        <h4>DATE: {gig.date}</h4>
+                                        <h4>LOCATION: {gig.location}</h4>
+                                        <h4>PAY: {gig.compensation}</h4> 
                                         {gig.notes}<br/>
                                         <Edit 
                                         updateGig={this.updateGig}
@@ -218,7 +225,10 @@ class App extends React.Component {
                         )
                     }
                 </ul>
+                 </div>
             </div>
+            <img src="https://images.unsplash.com/photo-1531469543542-5f61e38b875b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=4120&q=80"/>
+        </div>
         )
     }
 

@@ -1,0 +1,114 @@
+*{
+    margin: 0px;
+}
+
+body {
+    overflow: hidden;
+}
+
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    background-color: black; 
+    margin-bottom: 200px;   
+}
+
+.pagecontent {
+    display: flex;
+    margin:
+    background-color: darkslateblue;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    background-color: black;    
+    background-size: cover;
+    text-align: center;
+    color: blanchedalmond;
+    /* color: #a22e94; */
+    /* color: #f9a079; */
+    font-family: 'Modak', cursive;
+    height: 92px;
+    font-size: 50px;
+    padding: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar {
+    background-color: #00b9ff;
+    width: 500px;
+    height: 500px;
+    padding: 20px;
+    /* padding-top: 30px; */
+    align-items: center;
+}
+
+.main {
+    width: 100%;
+    height: 500px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+    padding: 20px;
+    overflow-y: scroll;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* border: 1px solid black; */
+    list-style: none;
+}
+
+li {
+    /* border: 1px solid black; */
+    width: 30%;
+    height: auto;
+    font-family: "Lato", sans-serif;
+    margin: 10px;
+    padding: 10px;
+}
+
+h2 {
+    font-family: "Lato", sans-serif;
+}
+
+/* h4 {
+    margin: 5px;
+} */
+
+button {
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.editclass {
+    margin: 5px;
+}
+
+.newform {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    padding: 10px;
+    justify-content: center;
+}
+
+input {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: whitesmoke;
+}
+
+img {
+    opacity: .5;
+    position: absolute;
+    width: 100%;
+}
+
+/* https://medium.com/@beyondborders/beginner-css-grid-sticky-navigation-scrolling-content-7c4de0a8d1dc */
