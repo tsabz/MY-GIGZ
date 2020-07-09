@@ -71,16 +71,53 @@ class App extends React.Component {
         )
     }
 
-    deleteGig = (event) => {
-        axios.delete('/gigz/' + event.target.value).then(
-            (response) => {
-                this.setState(
+    render = () => {
+        return (
+            <div>
+            <h1>Create GIG Post</h1>
+            <form onSubmit={this.createGig}>
+                <input onChange={this.changeNewGigName} type="text" placeholder="name"/>
+                <input onChange={this.changeNewGigDate} type="date" placeholder="date"/>
+                <input onChange={this.changeNewGigLocation} type="text" placeholder="location"/>
+                <input onChange={this.changeNewGigCompensation} type="text" placeholder="compensation"/>
+                <input onChange={this.changeNewGigNotes} type="textarea" placeholder="notes"/>
+                <input type="submit" value="Create GIG"/>
+            </form>
+                <h2>GIGZ</h2>
+                <ul>
                     {
-                        gigz: response.data
+                        this.state.gigz.map(
+                            (gig) => {
+                                return (
+                                    <li>
+                                        {gig.name}<br/>
+                                        {gig.date}<br/>
+                                        {gig.location}<br/>
+                                        {gig.compensation}<br/>
+                                        {gig.notes}<br/>
+                                        <Edit gig={gig}/>
+                                    </li>
+                                )
+                            }
+                        )
                     }
-                )
-            }
+                </ul>
+            </div>
         )
+    }
+
+}
+
+class Edit extends React.Component {
+    
+    state = {
+        show: false
+    }
+
+    toggleShow = () => {
+        this.setState({
+            show: !this.state.show
+        })
     }
 
     changeUpdateGigName = (event) => {
@@ -120,11 +157,11 @@ class App extends React.Component {
         axios.put(
             '/gigz/' + id,
             {
-                name:this.state.updateGigName,
-                date:this.state.updateGigDate,
-                location:this.state.updateGigLocation,
-                compensation:this.state.updateGigCompensation,
-                notes:this.state.updateGigNotes
+                name:this.props.updateGigName,
+                date:this.props.updateGigDate,
+                location:this.props.updateGigLocation,
+                compensation:this.props.updateGigCompensation,
+                notes:this.props.updateGigNotes
             }
         ).then((response) => {
             this.setState({
@@ -133,54 +170,45 @@ class App extends React.Component {
         })
     }
 
-    render = () => {
-        return (
-            <div>
-            <h1>Create GIG Post</h1>
-            <form onSubmit={this.createGig}>
-                <input onChange={this.changeNewGigName} type="text" placeholder="name"/>
-                <input onChange={this.changeNewGigDate} type="date" placeholder="date"/>
-                <input onChange={this.changeNewGigLocation} type="text" placeholder="location"/>
-                <input onChange={this.changeNewGigCompensation} type="text" placeholder="compensation"/>
-                <input onChange={this.changeNewGigNotes} type="textarea" placeholder="notes"/>
-                <input type="submit" value="Create GIG"/>
-            </form>
-                <h2>GIGZ</h2>
-                <ul>
+    deleteGig = (event) => {
+        axios.delete('/gigz/' + event.target.value).then(
+            (response) => {
+                this.setState(
                     {
-                        this.state.gigz.map(
-                            (gig) => {
-                                return (
-                                    <li>
-                                        {gig.name}<br/>
-                                        {gig.date}<br/>
-                                        {gig.location}<br/>
-                                        {gig.compensation}<br/>
-                                        {gig.notes}<br/>
-                                        <button value={gig.id} onClick={this.deleteGig}>
-                                            DELETE
-                                        </button>
-                                        <form id={gig.id} onSubmit={this.updateGig}>
-                                            <input onChange={this.changeUpdateGigName} type="text" placeholder="name"/>
-                                            <input onChange={this.changeUpdateGigDate} type="date" placeholder="date"/>
-                                            <input onChange={this.changeUpdateGigLocation} type="text" placeholder="location"/>
-                                            <input onChange={this.changeUpdateGigCompensation} type="text" placeholder="compensation"/>
-                                            <input onChange={this.changeUpdateGigNotes} type="textarea" placeholder="notes"/>
-                                            <input type="submit" value="Update GIG"/>
-                                        </form>
-                                    </li>
-                                )
-                            }
-                        )
+                        gigz: response.data
                     }
-                </ul>
-            </div>
+                )
+            }
         )
     }
 
+    render = () => {
+        const {gig} = this.props
+        return (
+            <div className="editclass">
+            <button onClick={this.toggleShow}>Edit</button>
+            <div className="editform">
+                {this.state.show ? (
+                    <form id={gig.id} onSubmit={this.updateGig}>
+                    <input onChange={gig.changeUpdateGigName} type="text" placeholder="name"/>
+                    <input onChange={gig.changeUpdateGigDate} type="date" placeholder="date"/>
+                    <input onChange={gig.changeUpdateGigLocation} type="text" placeholder="location"/>
+                    <input onChange={gig.changeUpdateGigCompensation} type="text" placeholder="compensation"/>
+                    <input onChange={gig.changeUpdateGigNotes} type="textarea" placeholder="notes"/>
+                    <input type="submit" value="Update GIG"/>
+                    <button value={gig.id} onClick={this.deleteGig}>
+                                            DELETE
+                    </button>
+                </form>
+                ) : (
+                    ''
+                )}
+            
+            </div>
+            </div>
+        )
+    }
 }
-
-
 
 
 ReactDOM.render(
