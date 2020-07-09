@@ -1,0 +1,45 @@
+*{
+    margin: 0px;
+}
+
+body {
+    overflow: hidden;
+}
+
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    background-color: blue;  
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px 1fr 30px
+}
+
+.pagecontent {
+    display: grid;
+    background-color: darkslateblue;
+    grid-template-columns: 1fr 3fr;
+    overflow: hidden;
+}
+
+.header {
+    background-color: darkgreen;
+}
+
+.sidebar {
+    background-color: coral;
+}
+
+.main {
+    background-color: blueviolet;
+    overflow-y: scroll;
+    padding: 20px;
+}
+
+
+
+
+
+
+/* https://medium.com/@beyondborders/beginner-css-grid-sticky-navigation-scrolling-content-7c4de0a8d1dc */

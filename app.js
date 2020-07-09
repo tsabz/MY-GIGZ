@@ -181,16 +181,23 @@ class App extends React.Component {
 
     render = () => {
         return (
-            <div>
-            <h1>Create GIG Post</h1>
-            <form onSubmit={this.createGig}>
-                <input onChange={this.changeNewGigName} type="text" placeholder="name"/>
-                <input onChange={this.changeNewGigDate} type="date" placeholder="date"/>
-                <input onChange={this.changeNewGigLocation} type="text" placeholder="location"/>
-                <input onChange={this.changeNewGigCompensation} type="text" placeholder="compensation"/>
-                <input onChange={this.changeNewGigNotes} type="textarea" placeholder="notes"/>
-                <input type="submit" value="Create GIG"/>
-            </form>
+    <div className="container">
+            <div className="header">
+                <h1>MYGIGZ</h1>
+            </div>
+            <div className="pagecontent">
+            <div className="sidebar">
+                <h1>Create GIG Post</h1>
+                <form onSubmit={this.createGig}>
+                    <input onChange={this.changeNewGigName} type="text" placeholder="name"/>
+                    <input onChange={this.changeNewGigDate} type="date" placeholder="date"/>
+                    <input onChange={this.changeNewGigLocation} type="text" placeholder="location"/>
+                    <input onChange={this.changeNewGigCompensation} type="text" placeholder="compensation"/>
+                    <input onChange={this.changeNewGigNotes} type="textarea" placeholder="notes"/>
+                    <input type="submit" value="Create GIG"/>
+                </form>
+            </div>
+            <div className="main">
                 <h2>GIGZ</h2>
                 <ul>
                     {
@@ -218,7 +225,9 @@ class App extends React.Component {
                         )
                     }
                 </ul>
+                 </div>
             </div>
+        </div>
         )
     }
 
