@@ -187,8 +187,8 @@ class App extends React.Component {
             </div>
             <div className="pagecontent">
             <div className="sidebar">
-                <h1>Create GIG Post</h1>
-                <form onSubmit={this.createGig}>
+                <h2>ADD MY GIGZ</h2>
+                <form className="newform" onSubmit={this.createGig}>
                     <input onChange={this.changeNewGigName} type="text" placeholder="name"/>
                     <input onChange={this.changeNewGigDate} type="date" placeholder="date"/>
                     <input onChange={this.changeNewGigLocation} type="text" placeholder="location"/>
@@ -198,17 +198,17 @@ class App extends React.Component {
                 </form>
             </div>
             <div className="main">
-                <h2>GIGZ</h2>
+        
                 <ul>
                     {
                         this.state.gigz.map(
                             (gig) => {
                                 return (
                                     <li>
-                                        {gig.name}<br/>
-                                        {gig.date}<br/>
-                                        {gig.location}<br/>
-                                        {gig.compensation}<br/>
+                                        <h4>NAME: {gig.name}</h4>
+                                        <h4>DATE: {gig.date}</h4>
+                                        <h4>LOCATION: {gig.location}</h4>
+                                        <h4>PAY: {gig.compensation}</h4> 
                                         {gig.notes}<br/>
                                         <Edit 
                                         updateGig={this.updateGig}
