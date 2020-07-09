@@ -40,7 +40,15 @@ The user can:
 - To avoid merge conflicts because of our short timeline for this project, we split up the work load by files.
 - We worked together to problem solve bugs together when needed.
 - When we had a difficult time with something like launching on Heroku for example, we worked together, read the documentation, and tried things out until we got things working!
+- We did a ton of pair programming and it went really well!
+- We ended up creating a new class component to put the edit form in. We created a toggle function that we used on our Edit putton to toggle back and forth to show the form. 
 
 ## :sweat: Challenges:
 - Heroku setup - something we worked through and overcame quickly!
 - We had trouble toggling the edit form on and off.
+
+## :blue_book: Sources:
+- This helped us a lot with our layout design   
+[Medium Article](https://medium.com/@beyondborders/beginner-css-grid-sticky-navigation-scrolling-content-7c4de0a8d1dc)
+- This is where we got our image
+[Turntable](https://images.unsplash.com/photo-1531469543542-5f61e38b875b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=4120&q=80)
