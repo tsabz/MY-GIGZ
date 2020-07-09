@@ -1,10 +1,55 @@
 
-class App extends React.Component {
-
+class Edit extends React.Component {
+    
     state = {
-        gigz: [],
-        show: true
+        show: false
     }
+
+    toggleShow = () => {
+        this.setState({
+            show: !this.state.show
+        })
+    }
+
+
+    render = () => {
+        const {gig, updateGig, 
+                changeUpdateGigName, 
+            changeUpdateGigDate, 
+            changeUpdateGigLocation, 
+            changeUpdateGigCompensation, 
+            changeUpdateGigNotes,
+            deleteGig } = this.props
+
+        return (
+            <div className="editclass">
+            <button onClick={this.toggleShow}>Edit</button>
+            <div className="editform">
+                {this.state.show ? (
+                    <form id={gig.id} onSubmit={updateGig}>
+                    <input onChange={changeUpdateGigName} type="text" placeholder="name"/>
+                    <input onChange={changeUpdateGigDate} type="date" placeholder="date"/>
+                    <input onChange={changeUpdateGigLocation} type="text" placeholder="location"/>
+                    <input onChange={changeUpdateGigCompensation} type="text" placeholder="compensation"/>
+                    <input onChange={changeUpdateGigNotes} type="textarea" placeholder="notes"/>
+                    <input type="submit" value="Update GIG"/>
+                    <button value={gig.id} onClick={deleteGig}>DELETE</button>
+                </form>
+                ) : (
+                    ''
+                )}
+            
+            </div>
+            </div>
+        )
+    }
+}
+
+
+class App extends React.Component {
+        state = {
+            gigz: []
+        }
 
     changeNewGigName = (event) => {
         this.setState({
@@ -71,17 +116,6 @@ class App extends React.Component {
         )
     }
 
-    deleteGig = (event) => {
-        axios.delete('/gigz/' + event.target.value).then(
-            (response) => {
-                this.setState(
-                    {
-                        gigz: response.data
-                    }
-                )
-            }
-        )
-    }
 
     changeUpdateGigName = (event) => {
         this.setState({
@@ -133,6 +167,18 @@ class App extends React.Component {
         })
     }
 
+    deleteGig = (event) => {
+        axios.delete('/gigz/' + event.target.value).then(
+            (response) => {
+                this.setState(
+                    {
+                        gigz: response.data
+                    }
+                )
+            }
+        )
+    }
+
     render = () => {
         return (
             <div>
@@ -157,17 +203,15 @@ class App extends React.Component {
                                         {gig.location}<br/>
                                         {gig.compensation}<br/>
                                         {gig.notes}<br/>
-                                        <button value={gig.id} onClick={this.deleteGig}>
-                                            DELETE
-                                        </button>
-                                        <form id={gig.id} onSubmit={this.updateGig}>
-                                            <input onChange={this.changeUpdateGigName} type="text" placeholder="name"/>
-                                            <input onChange={this.changeUpdateGigDate} type="date" placeholder="date"/>
-                                            <input onChange={this.changeUpdateGigLocation} type="text" placeholder="location"/>
-                                            <input onChange={this.changeUpdateGigCompensation} type="text" placeholder="compensation"/>
-                                            <input onChange={this.changeUpdateGigNotes} type="textarea" placeholder="notes"/>
-                                            <input type="submit" value="Update GIG"/>
-                                        </form>
+                                        <Edit 
+                                        updateGig={this.updateGig}
+                                        changeUpdateGigName={this.changeUpdateGigName}
+                                        changeUpdateGigDate={this.changeUpdateGigDate}
+                                        changeUpdateGigLocation={this.changeUpdateGigLocation}
+                                        changeUpdateGigCompensation={this.changeUpdateGigCompensation}
+                                        changeUpdateGigNotes={this.changeUpdateGigNotes}
+                                        deleteGig={this.deleteGig}
+                                        gig={gig}/>
                                     </li>
                                 )
                             }
@@ -179,9 +223,6 @@ class App extends React.Component {
     }
 
 }
-
-
-
 
 ReactDOM.render(
     <App></App>,
