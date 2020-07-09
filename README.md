@@ -1,6 +1,6 @@
 #  MyGigz
 
-![Login Page](INSERT IMAGE OF PROJECT HERE)
+![Login Page](https://i.imgur.com/MRbl9Cj.png)
 
 ### :computer: Creators:
 
